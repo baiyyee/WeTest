@@ -1,0 +1,19 @@
+monitor:
+  requests:
+    interval: 0
+
+    env:
+      dev:
+        protocol: [http, https]
+        domain: www.dev.com
+        path: api
+
+      uat:
+        protocol: [http, https]
+        domain: www.uat.com
+        path: api
+
+      prd:
+        protocol: [http, https]
+        domain: www.prd.com
+        path: api
