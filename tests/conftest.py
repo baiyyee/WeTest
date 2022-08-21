@@ -2,12 +2,12 @@ import os
 import pytest
 import sqlite3
 import logging
-import aiohttp
 import asyncio
-# from jira import JIRA
+from jira import JIRA
 from requests import Session
 from WeTest.util import encry
 from WeTest.util.api import API
+from aiohttp import ClientSession
 from pytest import TempPathFactory
 from WeTest.util import notification
 from WeTest.util.config import read_yaml
@@ -44,7 +44,7 @@ def pytest_html_results_table_row(report, cells):
 @pytest.fixture(scope="session")
 async def session():
     
-    session = aiohttp.ClientSession()
+    session = ClientSession()
 
     yield session
 
