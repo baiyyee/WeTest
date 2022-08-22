@@ -38,18 +38,12 @@ dependencies = [
     "user_agents",
     "imgkit",
     "pycryptodome",
-]
-
-
-[project.optional-dependencies]
-client = [
     "jira",
     "pika",
     "boto3",
     "paramiko",
-]
-
-hive = [
+    "cython",
+    "thriftpy",
     "bitarray==1.1.0",
     "impyla==0.16.2",
     "pure_sasl==0.6.2",
@@ -57,7 +51,15 @@ hive = [
 ]
 
 
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "allure-pytest",
+]
+
+
 [project.urls]
 "Homepage" = "https://baiyyee.github.io"
 "Source" = "https://github.com/baiyyee/WeTest"
 "Tracker" = "https://github.com/baiyyee/WeTest/issues"
+"Demo" = "https://github.com/baiyyee/OneStep"
