@@ -81,20 +81,8 @@ Results (1.16s):
 
 WeTest is available on PyPI:
 
-- For common use:
-
 ```console
 $ python -m pip install WeTest
-```
-
-- For **Jira/RabbitMQ/AWS S3/SSH/SFTP** support:
-```console
-$ python -m pip install WeTest[client]
-```
-
-- For **Hive** support:
-```console
-$ python -m pip install WeTest[hive]
 ```
 
 ## Features
