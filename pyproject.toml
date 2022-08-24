@@ -39,6 +39,8 @@ dependencies = [
     "imgkit",
     "pycryptodome",
     "jira",
+    "lxml",
+    "sxtwl==1.1.0",
     "pika",
     "boto3",
     "paramiko",
@@ -54,6 +56,8 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "pytest",
+    "pytest-html",
+    "pytest-asyncio",
     "allure-pytest",
 ]
 
