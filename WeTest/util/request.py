@@ -65,10 +65,28 @@ def get_redirect_history(url: str) -> list:
 def request(method: str, url: str, session: Session = Session(), **kwargs) -> Response:
 
     response = None
-    
-    valid_key = ["method", "url", "params", "data", "headers", "cookies", "files", "auth", "timeout", "allow_redirects", "proxies", "hooks", "stream", "verify", "cert", "json"]
-    kwargs = {k:v for k,v in kwargs.items() if k in valid_key and v is not None}
-    
+
+    valid_key = [
+        "method",
+        "url",
+        "params",
+        "data",
+        "headers",
+        "cookies",
+        "files",
+        "auth",
+        "timeout",
+        "allow_redirects",
+        "proxies",
+        "hooks",
+        "stream",
+        "verify",
+        "cert",
+        "json",
+    ]
+
+    kwargs = {k: v for k, v in kwargs.items() if k in valid_key and v is not None}
+
     # Replace the default UA
     kwargs.setdefault("headers", {"User-Agent": const.USER_AGENT})
 
@@ -88,16 +106,43 @@ def request(method: str, url: str, session: Session = Session(), **kwargs) -> Re
 
 
 def async_request(session: ClientSession, method: str, url: str, **kwargs) -> _RequestContextManager:
-    
-    valid_key = [ "method", "str_or_url", "params", "data", "json", "cookies", "headers", "skip_auto_headers", "auth", "allow_redirects", "max_redirects", "compress", "chunked", "expect100", "raise_for_status", "read_until_eof", "proxy", "proxy_auth", "timeout", "verify_ssl", "fingerprint", "ssl_context", "ssl", "proxy_headers", "trace_request_ctx"]
-    kwargs = {k:v for k,v in kwargs.items() if k in valid_key}
-    
+
+    valid_key = [
+        "method",
+        "str_or_url",
+        "params",
+        "data",
+        "json",
+        "cookies",
+        "headers",
+        "skip_auto_headers",
+        "auth",
+        "allow_redirects",
+        "max_redirects",
+        "compress",
+        "chunked",
+        "expect100",
+        "raise_for_status",
+        "read_until_eof",
+        "proxy",
+        "proxy_auth",
+        "timeout",
+        "verify_ssl",
+        "fingerprint",
+        "ssl_context",
+        "ssl",
+        "proxy_headers",
+        "trace_request_ctx",
+    ]
+
+    kwargs = {k: v for k, v in kwargs.items() if k in valid_key}
+
     try:
         if ("params" in kwargs) and kwargs["params"]:
             params = {key: value for key, value in kwargs["params"].items() if value is not None}
             kwargs.update(params=params)
 
-        return session.request(method, url, **kwargs)
+        return session._request(method, url, **kwargs)
 
     except Exception as e:
         logging.error("========================================= [ EXCEPTION ] =========================================")
