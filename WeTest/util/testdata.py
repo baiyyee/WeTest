@@ -76,8 +76,8 @@ class Provider(BaseProvider):
             ]
         )
 
-    def random_choice(self, seeds: list, n: int) -> list:
-        return random.choices(seeds, k=n)
+    def random_choice(self, seeds: list, n: int):
+        return random.choice(seeds) if n == 1 else random.choices(seeds, k=n)
 
     def ip(self, ip_type: str, region: str):
         geo_path = pkg_resources.resource_filename("WeTest", "config/geo.yaml")
@@ -126,7 +126,7 @@ def string(seeds: str = RANDOMSRING_DEFAULT_SEEDS, **kw) -> str:
     return fake.random_string(seeds=seeds, **kw)
 
 
-def random_choice(seeds: str, n: int = 1) -> list:
+def random_choice(seeds: str, n: int = 1):
     return fake.random_choice(seeds, n)
 
 
