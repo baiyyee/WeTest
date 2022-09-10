@@ -75,10 +75,10 @@ def test_testdatadata():
     logging.info("Random String4:{}".format(testdata.string(min=1, max=100)))
     logging.info("Random String5:{}".format(testdata.string(seeds="1234567890abcdef")))
     logging.info("Random String6:{}".format(testdata.string(seeds="1234567890abcdef", min=1, max=32)))
-    logging.info("Random Chinese String：{}".format(testdata.chinese_chars()))
-    logging.info("Random ASCII String：{}".format(testdata.ascii_letters()))
-    logging.info("Random ASCII String2：{}".format(testdata.ascii_letters(min=1, max=20)))
-    logging.info("Random Chinese String2：{}".format(testdata.chinese_chars(1, 20)))
+    logging.info("Random Chinese String: {}".format(testdata.chinese_chars()))
+    logging.info("Random ASCII String: {}".format(testdata.ascii_letters()))
+    logging.info("Random ASCII String2: {}".format(testdata.ascii_letters(min=1, max=20)))
+    logging.info("Random Chinese String2: {}".format(testdata.chinese_chars(1, 20)))
     logging.info("Random Sentence:   {}".format(testdata.sentence()))
     logging.info("Random Text:   {}".format(testdata.text()))
     logging.info("Random Word:   {}".format(testdata.word()))
@@ -111,23 +111,23 @@ def test_fakeuseragent():
 
 def test_date_between():
 
-    logging.info("Get Date Between Range：" + testdata.date_between("20210612", "20210613"))
-    logging.info("Get Date Between Range：" + testdata.date_between("2021/06/12", "2021/06/13"))
-    logging.info("Get Date Between Range：" + testdata.date_between("2021-06-12", "2021-06-13"))
-    logging.info("Get Date Between Range：" + testdata.date_between("20210612", "2021-06-13"))
-    logging.info("Get Date Between Range：" + testdata.date_between("20210612", "2021-06-13", "YYYY/MM/DD"))
-    logging.info("Get Date Between Range：" + testdata.date_between("20210612", "2021-06-13", "YYYYMMDD"))
+    logging.info("Get Date Between Range: " + testdata.date_between("20210612", "20210613"))
+    logging.info("Get Date Between Range: " + testdata.date_between("2021/06/12", "2021/06/13"))
+    logging.info("Get Date Between Range: " + testdata.date_between("2021-06-12", "2021-06-13"))
+    logging.info("Get Date Between Range: " + testdata.date_between("20210612", "2021-06-13"))
+    logging.info("Get Date Between Range: " + testdata.date_between("20210612", "2021-06-13", "YYYY/MM/DD"))
+    logging.info("Get Date Between Range: " + testdata.date_between("20210612", "2021-06-13", "YYYYMMDD"))
 
 
 def test_timestamp_between():
 
-    logging.info("Get Timestamp Between Range：" + str(testdata.timestamp_between("2020-07-28", "2020-07-28")))
-    logging.info("Get Timestamp Between Range：" + str(testdata.timestamp_between("2020-07-28 00:00:00", "2020-07-28 23:59:59")))
+    logging.info("Get Timestamp Between Range: " + str(testdata.timestamp_between("2020-07-28", "2020-07-28")))
+    logging.info("Get Timestamp Between Range: " + str(testdata.timestamp_between("2020-07-28 00:00:00", "2020-07-28 23:59:59")))
     logging.info(
-        "Get Timestamp Between Range：" + str(testdata.timestamp_between("2020-07-28 00:00:00.100", "2020-07-28 23:59:59.999"))
+        "Get Timestamp Between Range: " + str(testdata.timestamp_between("2020-07-28 00:00:00.100", "2020-07-28 23:59:59.999"))
     )
-    logging.info("Get Timestamp Between Range：" + str(testdata.timestamp_between("2020/07/28 00:00:00", "2020/07/28 23:59:59")))
-    logging.info("Get Timestamp Between Range：" + str(testdata.timestamp_between("2020/07/28 00:00:00", "2020/07/28 00:00:02")))
+    logging.info("Get Timestamp Between Range: " + str(testdata.timestamp_between("2020/07/28 00:00:00", "2020/07/28 23:59:59")))
+    logging.info("Get Timestamp Between Range: " + str(testdata.timestamp_between("2020/07/28 00:00:00", "2020/07/28 00:00:02")))
 
 
 def test_size(tmp_path: Path):
