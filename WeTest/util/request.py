@@ -93,10 +93,7 @@ def request(method: str, url: str, session: Session = Session(), **kwargs) -> Re
     try:
         response = session.request(method=method, url=url, **kwargs)
 
-        if response.raise_for_status():
-            logging.warning(log(response))
-        else:
-            logging.info(log(response))
+        logging.info(log(response))
 
     except Exception as e:
         logging.error("========================================= [ EXCEPTION ] =========================================")
