@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "WeTest"
-version = "1.0.1"
+version = "1.0.3"
 authors = [{ name="Huabo He", email="hhbstar@hotmail.com" }]
-description = "SDK For Test Automation"
+description = "SDK For Automation Tests"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -15,7 +15,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
 ]
-
 
 dependencies = [
     "requests",
@@ -44,6 +43,11 @@ dependencies = [
     "pika",
     "boto3",
     "paramiko",
+]
+
+
+[project.optional-dependencies]
+hive = [
     "cython",
     "thriftpy",
     "bitarray==1.1.0",
@@ -52,11 +56,10 @@ dependencies = [
     "thrift_sasl==0.2.1",
 ]
 
-
-[project.optional-dependencies]
 test = [
     "pytest",
     "pytest-html",
+    "pytest-sugar",
     "pytest-asyncio",
     "allure-pytest",
 ]
