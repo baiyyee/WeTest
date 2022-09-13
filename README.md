@@ -2,7 +2,7 @@
 
 **WeTest** is a simple, yet useful, test toolkit.
 
-WeTest allows you to do automation test project extremely easily, like api test, macro support, tracker requests, testdata build, common clients connection...
+WeTest allows you to start an automated testing project extremely easily, like api test, macro support, tracker requests, testdata build, common clients connection...
 
 Just try a little test scenario:
 
@@ -266,7 +266,7 @@ $ python -m pip install WeTest
 
 - For **Hive** support:
 ```console
-$ python -m pip install WeTest[hive]
+$ python -m pip install "WeTest[hive]"
 ```
 
 ## Features
@@ -352,4 +352,4 @@ WeTest is ready for the demands of building automation test project, for the nee
 
 ## TestBase
 
-Wanna to try? <a href="https://github.com/baiyyee/TestBase" target="_blank">**TestBase**</a> is a scaffold project and based on **WeTest**, it's ready for you to speed up your automation tests.
+Wanna to try? <a href="https://github.com/baiyyee/TestBase" target="_blank">**TestBase**</a> is a scaffold project and based on **WeTest**, it's ready for you to speed up your automated testing process.
