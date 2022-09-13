@@ -173,7 +173,7 @@ def download(url: str, path: str, session: Session = Session(), chunk_size: int 
     response = request("get", url, session, stream=True)
 
     if "Content-Disposition" in response.headers:
-        filename = response.headers["Content-Disposition"].split(";")[-1].strip().split("=")[-1]
+        filename = response.headers["Content-Disposition"].split(";")[-1].strip().split("=")[-1].split('"')[1]
     else:
         filename = str(response.url).split("/")[-1].split("?")[0]
 
