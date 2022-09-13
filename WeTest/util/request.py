@@ -162,7 +162,7 @@ async def bulk_request(method: str, urls: list, workers: int = 100, **kwargs):
 
 def upload(url: str, paths: list, session: Session = Session(), **kwargs) -> Response:
 
-    files = [("files", (Path(path).name, open(path, "rb"))) for path in paths]
+    files = [("files", (Path(path).name, open(path, "rb"))) for path in paths if path]
     kwargs.setdefault("files", files)
 
     return request("post", url, session, **kwargs)
