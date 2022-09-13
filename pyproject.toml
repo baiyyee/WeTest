@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "WeTest"
-version = "1.0.3"
+version = "1.0.4"
 authors = [{ name="Huabo He", email="hhbstar@hotmail.com" }]
 description = "SDK For Automation Tests"
 readme = "README.md"
@@ -37,6 +37,7 @@ dependencies = [
     "user_agents",
     "imgkit",
     "pycryptodome",
+    "python-magic",
     "jira",
     "lxml",
     "sxtwl==1.1.0",
