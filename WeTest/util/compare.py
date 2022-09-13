@@ -1,5 +1,6 @@
 import logging
 import datacompy
+from .encry import md5
 from dictdiffer import diff
 from pandas import DataFrame
 from jsonschema import validate, draft7_format_checker
@@ -34,6 +35,11 @@ def campare_dict(source: dict, target: dict) -> bool:
 def campare_list(source: list, target: list) -> bool:
 
     return sorted(source) == sorted(target)
+
+
+def campare_file(source: str, target: str) -> bool:
+
+    return md5(source, "file") == md5(target, "file")
 
 
 def campare_schema(json: dict, schema: dict) -> bool:

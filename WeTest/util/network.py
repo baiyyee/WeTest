@@ -1,4 +1,6 @@
+import magic
 import requests
+from pathlib import Path
 from user_agents import parse
 from ipaddress import ip_address
 from ..const import API_IP_QUERY
@@ -6,25 +8,30 @@ from urllib.parse import urlparse, ParseResult
 
 
 def get_domain(url: str) -> str:
-    
+
     return parse_url(url).netloc
 
 
 def parse_url(url: str) -> ParseResult:
-    
+
     return urlparse(url)
 
 
 def get_ip_by_range(start_ip: str, end_ip: str) -> str:
-    
+
     start = int(ip_address(start_ip).packed.hex(), 16)
     end = int(ip_address(end_ip).packed.hex(), 16) + 1
 
     return [ip_address(ip).exploded for ip in range(start, end)]
 
 
+def parse_mime_type(path: str) -> str:
+
+    return magic.from_buffer(open(path, "rb").read(2048), mime=True) if Path(path).exists() else None
+
+
 def parse_ip(ip: str) -> dict:
-    
+
     url = API_IP_QUERY.format(ip=ip)
     data = requests.get(url).json()["data"]
 
@@ -41,7 +48,7 @@ def parse_ip(ip: str) -> dict:
 
 
 def parse_useragent(useragent: str) -> dict:
-    
+
     parsed_ua = {}
     user_agent = parse(useragent)
 
@@ -67,7 +74,7 @@ def parse_useragent(useragent: str) -> dict:
 
 
 def get_url_params(url: str) -> dict:
-    
+
     params = {}
     for param in url.split("&"):
         if "=" in param:

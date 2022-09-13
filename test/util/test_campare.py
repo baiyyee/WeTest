@@ -89,6 +89,15 @@ def test_campare_list():
     assert compare.campare_list(list_01, list_02)
 
 
+def test_campare_file():
+
+    file1 = "test/util/test_campare.py"
+    file2 = "test/util/test_client.py"
+
+    assert compare.campare_file(file1, file1) == True
+    assert compare.campare_file(file1, file2) == False
+
+
 def test_campare_schema():
 
     json = {"data": [1, 2, 3]}

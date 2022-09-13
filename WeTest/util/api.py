@@ -60,11 +60,11 @@ class API:
 
         return response
 
-    def upload(self, url: str, path: str, **kwargs) -> Response:
+    def upload(self, url: str, paths: list, **kwargs) -> Response:
 
         url = (self.domain + url) if self.domain else url
 
-        return upload(url, path, self.session, **kwargs)
+        return upload(url, paths, self.session, **kwargs)
 
     def download(self, url: str, path: str, chunk_size: int = 128) -> str:
 

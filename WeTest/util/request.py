@@ -3,6 +3,7 @@ import pypeln
 import logging
 import textwrap
 import requests
+from pathlib import Path
 from WeTest import const
 from WeTest.util import encry
 from aiohttp import ClientSession
@@ -159,9 +160,10 @@ async def bulk_request(method: str, urls: list, workers: int = 100, **kwargs):
     return await task()
 
 
-def upload(url: str, path: str, session: Session = Session(), **kwargs) -> Response:
+def upload(url: str, paths: list, session: Session = Session(), **kwargs) -> Response:
 
-    kwargs.setdefault("files", {"file": open(path, "rb")})
+    files = [("files", (Path(path).name, open(path, "rb"))) for path in paths]
+    kwargs.setdefault("files", files)
 
     return request("post", url, session, **kwargs)
 

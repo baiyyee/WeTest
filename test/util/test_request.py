@@ -114,5 +114,5 @@ def test_upload_download(tmp_path: Path):
 
     # upload
     url = "https://graph.baidu.com/upload?uptime={}".format(date.get_unixtime(13))
-    response = request.upload(url, path)
+    response = request.upload(url, [path])
     assert response.status_code == 200
