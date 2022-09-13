@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "WeTest"
-version = "1.0.4"
+version = "1.0.5"
 authors = [{ name="Huabo He", email="hhbstar@hotmail.com" }]
-description = "SDK For Automation Tests"
+description = "Toolkit For Automated Testing"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
