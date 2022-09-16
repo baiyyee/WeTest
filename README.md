@@ -293,6 +293,7 @@ WeTest is ready for the demands of building automation test project, for the nee
     - dict
     - list
     - schema
+    - file
   - config
     - yaml
     - ini
@@ -312,6 +313,7 @@ WeTest is ready for the demands of building automation test project, for the nee
     - ip
     - url
     - useragent
+    - file mime type
   - notication
     - work wechat
     - wechat(todo)
@@ -328,7 +330,7 @@ WeTest is ready for the demands of building automation test project, for the nee
     - get redirect history
     - async request
     - bulk request
-    - upload
+    - upload file(s)
     - download
     - log response
   - testdata
