@@ -4,11 +4,11 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # python-version: ["3.7", "3.8", "3.9", "3.10"]
-        python-version: ["3.7"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        os: [ubuntu-18.04, macOS-latest, windows-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -28,6 +28,13 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pytest
+          pytest --html=pytest-results-${{ matrix.python-version }}.html --self-contained-html
         env:
           ROBOT_KEY: ${{ secrets.WORK_WEIXIN_ROBOT_KEY }}
+
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: ytest-results-${{ matrix.python-version }}.html
+        if: ${{ always() }}
