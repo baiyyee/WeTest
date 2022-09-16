@@ -57,9 +57,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:buildcache,mode=max
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:${{ github.event.release.tag_name }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:buildcache,mode=max
 
       - name: Build and push to GitHub Container Registry
         uses: docker/login-action@v1
@@ -67,6 +67,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: ghcr.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ github.event.repository.full_name }}:buildcache,mode=max
+          tags: ghcr.io/${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:${{ github.event.release.tag_name }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/WeTest:buildcache,mode=max
