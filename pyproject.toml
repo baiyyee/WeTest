@@ -20,7 +20,7 @@ dependencies = [
     "requests",
     "aiohttp",
     "numpy",
-    "pandas==1.4.2",
+    "pandas",
     "openpyxl",
     "xlrd",
     "arrow",
