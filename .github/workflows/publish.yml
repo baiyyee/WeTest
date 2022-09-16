@@ -1,8 +1,9 @@
 name: publish
-on:
-  release:
-    types:
-      - published
+on: [push]
+# on:
+#   release:
+#     types:
+#       - published
 
 permissions:
   contents: read
