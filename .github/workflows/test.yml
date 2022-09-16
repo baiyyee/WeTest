@@ -22,7 +22,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install cython
           pip install thriftpy
-          pip install pandas==1.4.2 -i https://mirrors.aliyun.com/pypi/simple/
+          pip install pandas==1.4.2 -i https://pypi.python.org/simple
           pip install -e .[hive,test]
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
