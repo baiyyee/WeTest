@@ -30,13 +30,11 @@ def test_get_ip():
 def test_parse_mime_type():
 
     path_ini = "pytest.ini"
-    path_ttc = "doc/fonts/simsun.ttc"
     path_yml = "doc/template/dev.yaml"
     path_py = "test/util/test_network.py"
     path_xlsx = "doc/template/tracker.xlsx"
 
     assert network.parse_mime_type(path_ini) == "text/plain"
-    assert network.parse_mime_type(path_ttc) == "application/font-sfnt"
     assert network.parse_mime_type(path_yml) == "text/plain"
     assert network.parse_mime_type(path_py) == "text/x-python"
     assert network.parse_mime_type(path_xlsx) == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

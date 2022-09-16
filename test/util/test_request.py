@@ -23,9 +23,9 @@ def test_request_by_ip():
 
 def test_get_redirect_history():
 
-    expect = [(302, "http://www.baidu.com/"), (200, "https://www.baidu.com/")]
+    expect = [(200, "https://www.baidu.com/")]
 
-    url = "http://www.baidu.com"
+    url = "https://www.baidu.com"
     actual = request.get_redirect_history(url)
 
     assert actual == expect
@@ -33,10 +33,10 @@ def test_get_redirect_history():
 
 def test_request_get():
 
-    response = request.request("get", url="http://www.baidu.com")
+    response = request.request("get", url="https://www.baidu.com")
     status_code = response.status_code
 
-    response = request.request("get", url="http://www.baidu.com", params={"a": 1, "b": 2})
+    response = request.request("get", url="https://www.baidu.com", params={"a": 1, "b": 2})
     url = response.url
 
     assert status_code == 200
