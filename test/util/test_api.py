@@ -48,7 +48,7 @@ def test_api_upload_download(api: API, tmp_path: Path, monkeypatch):
     # temporary changed the domain and recoverd once its finished
     monkeypatch.setattr(api, "domain", "https://graph.baidu.com")
 
-    response = api.upload(url, path)
+    response = api.upload(url, [path])
     assert response.status_code == 200
 
 

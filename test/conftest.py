@@ -28,7 +28,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
 
     if htmlpath and (failed or error):
         key = os.getenv("ROBOT_KEY")
-        notification.send_report(key, htmlpath)
+        notification.send_html(key, htmlpath)
 
 
 def pytest_html_report_title(report):

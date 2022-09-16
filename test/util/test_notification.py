@@ -58,22 +58,19 @@ def test_send_file(tmp_path: Path):
 def test_send_html(tmp_path: Path):
 
     content = """
-        <html>
-        <head>    
-        <meta charset="UTF-8">    
-        <title>Title</title>
-        <head/>
-        
-        <body>
-        <h1>这是一级标题</h1>
-        <h2>这是二级标题</h2>
-        <h3>这是三级标题</h3>
-        <h4>这是四级标题</h4>
-        <h5>这是五级标题</h5>
-        <h6>这是六级标题</h6>
-        </body>
-        </html>
-    """
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
+"""
     path = tmp_path / "test.html"
     path.write_text(content)
     notification.send_html(key, str(path))
