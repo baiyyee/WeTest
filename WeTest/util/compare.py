@@ -1,8 +1,11 @@
 import logging
 import datacompy
+from PIL import Image
 from .encry import md5
 from dictdiffer import diff
 from pandas import DataFrame
+from WeTest.util import path
+from pixelmatch.contrib.PIL import pixelmatch
 from jsonschema import validate, draft7_format_checker
 from jsonschema.exceptions import SchemaError, ValidationError
 
@@ -40,6 +43,25 @@ def campare_list(source: list, target: list) -> bool:
 def campare_file(source: str, target: str) -> bool:
 
     return md5(source, "file") == md5(target, "file")
+
+
+def campre_image(source: str, target: str, threshold: float = 0.1, includeAA=True, **kwargs) -> bool:
+
+    ori = source
+    source = Image.open(source)
+    target = Image.open(target)
+    diff = Image.new("RGBA", source.size)
+
+    pixels = pixelmatch(source, target, diff, threshold=threshold, includeAA=includeAA, **kwargs)
+
+    is_match = True
+    if pixels > 0:
+        is_match = False
+        output = path.replace_name(ori, "source_target_diff")
+        logging.info(f"Not match, see {output} for details")
+        diff.save(output)
+
+    return is_match
 
 
 def campare_schema(json: dict, schema: dict) -> bool:

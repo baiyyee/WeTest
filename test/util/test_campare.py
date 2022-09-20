@@ -2,7 +2,9 @@ import io
 import pytest
 import pandas
 import logging
-from WeTest.util import compare
+import requests
+from PIL import Image, ImageDraw
+from WeTest.util import compare, path
 from pandas.util.testing import assert_frame_equal
 
 
@@ -96,6 +98,22 @@ def test_campare_file():
 
     assert compare.campare_file(file1, file1) == True
     assert compare.campare_file(file1, file2) == False
+
+
+def test_campare_image(tmp_path):
+    image = requests.get("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png").content
+
+    img_ori = tmp_path / "test.png"
+    img_new = path.replace_name(str(img_ori), "img_new")
+
+    path.write_bytes(image, img_ori)
+
+    img = Image.open(img_ori)
+    draw = ImageDraw.Draw(img)
+    draw.text((28, 26), "Baidu", fill=(0, 0, 0))
+    img.save(img_new)
+
+    assert compare.campre_image(str(img_ori), img_new) == False
 
 
 def test_campare_schema():
