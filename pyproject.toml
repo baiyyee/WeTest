@@ -36,6 +36,7 @@ dependencies = [
     "ua-parser",
     "user_agents",
     "imgkit",
+    "pixelmatch",
     "pycryptodome",
     "python-magic",
     "jira",
