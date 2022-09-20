@@ -294,6 +294,7 @@ WeTest is ready for the demands of building automation test project, for the nee
     - list
     - schema
     - file
+    - image
   - config
     - yaml
     - ini
@@ -318,6 +319,8 @@ WeTest is ready for the demands of building automation test project, for the nee
     - work wechat
     - wechat(todo)
     - email(todo)
+  - path
+    - all path related scenario
   - provider
     - dataframe & excel
     - read & output
