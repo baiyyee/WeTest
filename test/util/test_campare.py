@@ -3,6 +3,7 @@ import pytest
 import pandas
 import logging
 import requests
+from io import BytesIO
 from PIL import Image, ImageDraw
 from WeTest.util import compare, path
 from pandas.util.testing import assert_frame_equal
@@ -100,7 +101,7 @@ def test_campare_file():
     assert compare.campare_file(file1, file2) == False
 
 
-def test_campare_image(tmp_path):
+def test_campare_image_str(tmp_path):
     image = requests.get("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png").content
 
     img_ori = tmp_path / "test.png"
@@ -113,7 +114,22 @@ def test_campare_image(tmp_path):
     draw.text((28, 26), "Baidu", fill=(0, 0, 0))
     img.save(img_new)
 
-    assert compare.campre_image(str(img_ori), img_new) == False
+    assert compare.campre_image(str(img_ori), img_new, output=f"{tmp_path / 'test_campare_image_str.png'}") == False
+
+
+def test_campare_image_bytes(tmp_path):
+    image = requests.get("https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png").content
+    image = BytesIO(image)
+
+    img = Image.open(image)
+    draw = ImageDraw.Draw(img)
+    draw.text((28, 26), "Baidu", fill=(0, 0, 0))
+    image_new = BytesIO()
+    img.save(image_new, "png")
+
+    output = str(tmp_path / "test_campare_image_bytes.png")
+
+    assert compare.campre_image(image, image_new, output=output) == False
 
 
 def test_campare_schema():

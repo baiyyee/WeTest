@@ -2,6 +2,8 @@ import logging
 import datacompy
 from PIL import Image
 from .encry import md5
+from io import BytesIO
+from typing import Union
 from dictdiffer import diff
 from pandas import DataFrame
 from WeTest.util import path
@@ -45,9 +47,10 @@ def campare_file(source: str, target: str) -> bool:
     return md5(source, "file") == md5(target, "file")
 
 
-def campre_image(source: str, target: str, threshold: float = 0.1, includeAA=True, **kwargs) -> bool:
+def campre_image(
+    source: Union[str, BytesIO], target: Union[str, BytesIO], output: str, threshold: float = 0.1, includeAA=True, **kwargs
+) -> bool:
 
-    ori = source
     source = Image.open(source)
     target = Image.open(target)
     diff = Image.new("RGBA", source.size)
@@ -57,7 +60,7 @@ def campre_image(source: str, target: str, threshold: float = 0.1, includeAA=Tru
     is_match = True
     if pixels > 0:
         is_match = False
-        output = path.replace_name(ori, "source_target_diff")
+
         logging.info(f"Not match, see {output} for details")
         diff.save(output)
 
